@@ -1,13 +1,6 @@
-<<<<<<< HEAD
 # MividAI
-<<<<<<< HEAD
-Plate-forme pour découvrir sa mission de vie
-=======
-=======
-# Mividai
->>>>>>> 828b909 (Update projet desc)
 
-Mividai est une plateforme innovante destinée à aider les individus à découvrir leur mission de vie en combinant développement personnel, spiritualité et intelligence artificielle.
+MividAI est une plateforme technologiqueinnovante destinée à aider à découvrir sa mission de vie, avec un impact social positif, et une économie durable, tout en combinant développementpersonnel, spiritualité et intelligence artificielle.
 
 ## 🌟 Fonctionnalités
 - Questionnaire interactif
@@ -16,11 +9,10 @@ Mividai est une plateforme innovante destinée à aider les individus à découv
 - Accessible sur mobile et ordinateur
 
 ## 🌐 Accès au site
-https://TON-NOM-D-UTILISATEUR.github.io/mividai/
+https://fire2601.github.io/mividai/
 
 ## 🚀 Technologies utilisées
 - HTML
 - CSS
 - JavaScript
 - GitHub Pages
->>>>>>> c5c11d2 (Update Readme with projet desc)
