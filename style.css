@@ -70,3 +70,65 @@ button:hover {
   font-size: 14px;
   color: #777;
 }
+.contact-section {
+  text-align: left;
+  margin-top: 20px;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contact-form label {
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  width: 100%;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: #4facfe;
+  box-shadow: 0 0 5px rgba(79, 172, 254, 0.3);
+}
+
+.contact-info {
+  margin-top: 30px;
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.contact-info a {
+  color: #4facfe;
+  text-decoration: none;
+}
+
+.contact-info a:hover {
+  text-decoration: underline;
+}
+.navbar {
+  margin-top: 20px;
+}
+
+.navbar a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+.navbar a:hover {
+  color: #4facfe;
+}
+
