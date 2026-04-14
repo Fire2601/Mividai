@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - MividAI</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="header">
+    <h1>Contactez-nous</h1>
+    <p class="subtitle">Nous serions ravis d’échanger avec vous</p>
+  </header>
+
+  <main class="container">
+    <section class="contact-section">
+      <h2>Envoyez-nous un message</h2>
+      <form class="contact-form" action="https://formspree.io/f/xojyvpnp" method="POST">
+        
+        <label for="name">Nom</label>
+        <input type="text" id="name" name="name" placeholder="Votre nom" required>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Votre adresse email" required>
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="5" placeholder="Votre message" required></textarea>
+
+        <button type="submit">Envoyer</button>
+      </form>
+
+      <div class="contact-info">
+        <h3>Autres moyens de contact</h3>
+        <p>📧 Email : <a href="mailto:contact@mividai.com">contact@mividai.com</a></p>
+        <p>🌐 Site : <a href="https://fire2601.github.io/mividai/" target="_blank">MividAI</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© 2026 MividAI – Tous droits réservés</p>
+  </footer>
+
+</body>
+</html>
