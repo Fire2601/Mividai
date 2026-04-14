@@ -1,9 +1,13 @@
+<<<<<<< HEAD
 # MividAI
 <<<<<<< HEAD
 Plate-forme pour découvrir sa mission de vie
 =======
+=======
+# Mividai
+>>>>>>> 828b909 (Update projet desc)
 
-MividAI est une plateforme innovante destinée à aider les individus à découvrir leur mission de vie en combinant développement personnel, spiritualité et intelligence artificielle.
+Mividai est une plateforme innovante destinée à aider les individus à découvrir leur mission de vie en combinant développement personnel, spiritualité et intelligence artificielle.
 
 ## 🌟 Fonctionnalités
 - Questionnaire interactif
