@@ -72,6 +72,28 @@ h1 {
   font-size: 14px;
   color: #777;
 }
+#results {
+  font-size: 18px;
+  line-height: 1.6;
+  text-align: left;
+  margin: 20px 0;
+}
+
+#results h2 {
+  font-size: 24px;
+  color: #4facfe;
+  text-align: center;
+}
+
+#results ul {
+  margin-left: 20px;
+}
+
+#results p {
+  font-size: 20px;
+  margin-top: 20px;
+  text-align: center;
+}
 .contact-section {
   text-align: left;
   margin-top: 20px;
