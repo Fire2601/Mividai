@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Résultats - MividAI</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <a href="index.html">Accueil</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <div class="container">
+    <h1>Tes Résultats</h1>
+    <p class="subtitle">Voici un aperçu basé sur tes réponses.</p>
+
+    <div id="results"></div>
+
+    <button class="btn" onclick="window.location.href='questions.html'">Recommencer</button>
+  </div>
+
+  <script>
+    const responses = JSON.parse(localStorage.getItem('mividai_answers') || '[]');
+    const resultsDiv = document.getElementById('results');
+
+    if (responses.length === 0) {
+      resultsDiv.innerHTML = '<p>Aucune réponse trouvée. <a href="questions.html">Recommence le questionnaire</a>.</p>';
+    } else {
+      let message = '<h2>Tes réponses :</h2><ul>';
+      responses.forEach((resp, i) => {
+        message += `<li>Question ${i+1}: ${resp}</li>`;
+      });
+      message += '</ul><p>Basé sur tes réponses, tu sembles être quelqu\'un qui...</p>';
+      // Ajouter une logique simple pour le message
+      const positive = responses.filter(r => r.includes('Bien') || r.includes('Oui') || r.includes('Réfléchir') || r.includes('Réussite')).length;
+      if (positive >= 3) {
+        message += '<p>Tu es motivé et clair dans tes objectifs !</p>';
+      } else {
+        message += '<p>Il pourrait être temps de réfléchir à tes aspirations.</p>';
+      }
+      resultsDiv.innerHTML = message;
+    }
+  </script>
+</body>
+</html>
