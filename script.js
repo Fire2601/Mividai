@@ -43,26 +43,24 @@ function startQuiz() {
 
 function showQuestion() {
   const quiz = document.getElementById("quiz");
-  quiz.innerHTML = "";
+  const q = questions[currentQuestion];
 
-  if (currentQuestion >= questions.length) {
-    showResult();
-    return;
-  }
+  quiz.classList.remove("show");
 
-  let q = questions[currentQuestion];
-
-  let html = `<h2>${q.text}</h2>`;
-
-  q.answers.forEach(answer => {
-    html += `
-      <button onclick="selectAnswer('${answer.type}')">
-        ${answer.text}
-      </button>
+  setTimeout(() => {
+    quiz.innerHTML = `
+      <div class="question">${q.question}</div>
+      ${q.answers.map(a => 
+        `<button class="btn" onclick="selectAnswer('${a}')">${a}</button>`
+      ).join("")}
     `;
-  });
 
-  quiz.innerHTML = html;
+    quiz.classList.add("fade");
+    setTimeout(() => quiz.classList.add("show"), 50);
+
+  }, 200);
+
+  updateProgress();
 }
 
 function selectAnswer(type) {
