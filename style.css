@@ -2,20 +2,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
 body {
+  font-family: Arial;
+  background: #0f172a;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
   margin: 0;
-  font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg, #4facfe, #00f2fe);
-  color: #333;
-  text-align: center;
-}
-
-.container {
-  max-width: 800px;
-  margin: 60px auto;
-  padding: 40px 20px;
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
@@ -36,7 +30,12 @@ h1 {
   line-height: 1.6;
 }
 
-
+.container {
+  background: #111827;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 0 30px rgba(0,0,0,0.5);
+}
 .btn {
   display: block;
   width: 100%;
@@ -151,4 +150,14 @@ h1 {
 }
 .btn:active {
   transform: scale(0.95);
+}
+.container {
+  width: 90%;
+  max-width: 500px;
+  text-align: center;
+}
+.question {
+  font-size: 24px;
+  margin-bottom: 25px;
+  font-weight: bold;
 }
