@@ -37,6 +37,7 @@ const questions = [
 ];
 
 function startQuiz() {
+  document.getElementById("startButton").classList.add("hidden");
   document.getElementById("quiz").classList.remove("hidden");
   showQuestion();
 }
@@ -45,13 +46,17 @@ function showQuestion() {
   const quiz = document.getElementById("quiz");
   const q = questions[currentQuestion];
 
+  if (!q) {
+    return showResult();
+  }
+
   quiz.classList.remove("show");
 
   setTimeout(() => {
     quiz.innerHTML = `
-      <div class="question">${q.question}</div>
+      <div class="question">${q.text}</div>
       ${q.answers.map(a => 
-        `<button class="btn" onclick="selectAnswer('${a}')">${a}</button>`
+        `<button class="btn" onclick="selectAnswer('${a.type}')">${a.text}</button>`
       ).join("")}
     `;
 
@@ -59,14 +64,21 @@ function showQuestion() {
     setTimeout(() => quiz.classList.add("show"), 50);
 
   }, 200);
-
-  updateProgress();
 }
 
 function selectAnswer(type) {
   score[type]++;
   currentQuestion++;
+
+  if (currentQuestion >= questions.length) {
+    return showResult();
+  }
+
   showQuestion();
+}
+
+function updateProgress() {
+  // Optionnel : ajout d'une barre de progression plus tard
 }
 
 function showResult() {
