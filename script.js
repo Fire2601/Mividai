@@ -117,3 +117,4 @@ function showResult() {
     <button class="btn" onclick="startQuiz()">Recommencer</button>
   `;
 }
+const questions = [...]
