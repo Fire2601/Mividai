@@ -37,7 +37,16 @@ const questions = [
 ];
 
 function startQuiz() {
+  currentQuestion = 0;
+  score = {
+    humaniste: 0,
+    analytique: 0,
+    spirituel: 0,
+    creatif: 0
+  };
+
   document.getElementById("startButton").classList.add("hidden");
+  document.getElementById("result").classList.add("hidden");
   document.getElementById("quiz").classList.remove("hidden");
   showQuestion();
 }
@@ -105,5 +114,6 @@ function showResult() {
   result.innerHTML = `
     <h2>Ton profil de mission de vie</h2>
     <p>${message}</p>
+    <button class="btn" onclick="startQuiz()">Recommencer</button>
   `;
 }
