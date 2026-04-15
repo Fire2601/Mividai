@@ -37,7 +37,7 @@ h1 {
 }
 
 
-button {
+.btn {
   display: block;
   width: 100%;
   padding: 15px;
@@ -51,7 +51,7 @@ button {
   transition: all 0.2s ease;
 }
 
-button:hover {
+.btn:hover {
   transform: scale(1.05);
   background: linear-gradient(135deg, #334155, #475569);
   box-shadow: 0 0 15px rgba(56, 189, 248, 0.5);
@@ -154,6 +154,6 @@ button:hover {
   opacity: 1;
   transform: translateY(0);
 }
-button:active {
+.btn:active {
   transform: scale(0.95);
 }
