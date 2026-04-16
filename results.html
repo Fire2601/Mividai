@@ -21,8 +21,43 @@
     <button class="btn" onclick="window.location.href='questions.html'">Recommencer</button>
   </div>
 <script>
-const resultsDiv = document.getElementById("results");
- const raw = localStorage.getItem("mividai_result");
+  const resultData = JSON.parse(localStorage.getItem("mividai_result") || "null");
+  const resultsDiv = document.getElementById("results");
+
+  if (!resultData) {
+    resultsDiv.innerHTML = `
+      <p>Aucun résultat trouvé.</p>
+      <p><a href="questions.html">Recommence le questionnaire</a>.</p>
+    `;
+  } else {
+    resultsDiv.innerHTML = `
+      <div class="result-card">
+        <h2>${resultData.emoji} Ton profil de mission de vie</h2>
+
+        <p><strong>Profil principal :</strong> ${resultData.title}</p>
+        <p><strong>Énergie secondaire :</strong> ${resultData.secondaryTitle}</p>
+
+        <p>${resultData.description}</p>
+
+        <h3>🌟 Tes forces</h3>
+        <ul>
+          <li>${resultData.strengths[0]}</li>
+          <li>${resultData.strengths[1]}</li>
+          <li>${resultData.strengths[2]}</li>
+        </ul>
+
+        <h3>⚠️ Tes freins</h3>
+        <ul>
+          <li>${resultData.blocks[0]}</li>
+          <li>${resultData.blocks[1]}</li>
+          <li>${resultData.blocks[2]}</li>
+        </ul>
+
+        <h3>🚀 Ton conseil</h3>
+        <p>${resultData.advice}</p>
+      </div>
+    `;
+  }
 </script>
 </body>
 </html>
