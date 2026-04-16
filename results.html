@@ -20,124 +20,31 @@
 
     <button class="btn" onclick="window.location.href='questions.html'">Recommencer</button>
   </div>
+<script>
+  const resultsDiv = document.getElementById("results");
 
-  <script>
-    const resultsDiv = document.getElementById("results");
+  // 🔥 DEBUG VISUEL DIRECT
+  resultsDiv.innerHTML = "<h2>DEBUG EN COURS...</h2>";
 
-    try {
-      const raw = localStorage.getItem("mividai_result");
+  const raw = localStorage.getItem("mividai_result");
 
-      if (!raw) {
-        resultsDiv.innerHTML = `
-          <div class="result-card">
-            <h2>⚠️ Aucun résultat trouvé</h2>
-            <p>Le quiz n’a pas encore enregistré de résultat dans le navigateur.</p>
-            <p>Refais le questionnaire puis reviens ici.</p>
-          </div>
-        `;
-      } else {
-        const resultData = JSON.parse(raw);
+  if (!raw) {
+    resultsDiv.innerHTML += "<p>❌ localStorage VIDE</p>";
+  } else {
+    resultsDiv.innerHTML += "<p>✅ localStorage trouvé</p>";
+    resultsDiv.innerHTML += "<pre>" + raw + "</pre>";
+  }
 
-        const titles = {
-          humaniste: "Le Guide du Lien Humain",
-          analytique: "L’Architecte de Clarté",
-          spirituel: "L’Explorateur de Sens",
-          creatif: "Le Créateur de Possibilités"
-        };
+  try {
+    const resultData = JSON.parse(raw);
 
-        const punchlines = {
-          humaniste: "Tu es fait(e) pour connecter, soutenir et impacter les autres.",
-          analytique: "Tu es fait(e) pour comprendre, structurer et construire.",
-          spirituel: "Tu es fait(e) pour chercher, ressentir et éveiller.",
-          creatif: "Tu es fait(e) pour imaginer, créer et initier."
-        };
+    resultsDiv.innerHTML += "<p>✅ JSON PARSÉ</p>";
+    resultsDiv.innerHTML += "<pre>" + JSON.stringify(resultData, null, 2) + "</pre>";
 
-        function dynamicInsight(scores) {
-          const values = Object.values(scores || {});
-          const total = values.reduce((a, b) => a + b, 0);
-
-          if (!total) {
-            return "Ton profil est encore en cours de clarification.";
-          }
-
-          const max = Math.max(...values);
-          const ratio = max / total;
-
-          if (ratio > 0.6) {
-            return "Tu as un profil très affirmé. Ta direction intérieure semble déjà forte et claire.";
-          } else if (ratio > 0.45) {
-            return "Tu es dans une phase de structuration. Plusieurs dimensions de toi cherchent à s’aligner.";
-          } else {
-            return "Tu es dans une phase d’exploration. Ton potentiel est large, mais demande encore à être clarifié.";
-          }
-        }
-
-        function immediateAction(mainType) {
-          if (mainType === "analytique") {
-            return "Choisis une décision que tu repousses et passe aujourd’hui à une action concrète, même petite.";
-          }
-          if (mainType === "creatif") {
-            return "Commence une idée ou un projet dès aujourd’hui, même imparfaitement, pour transformer ton élan en mouvement.";
-          }
-          if (mainType === "humaniste") {
-            return "Apporte aujourd’hui de la valeur à quelqu’un ou reconnecte-toi à une relation importante pour toi.";
-          }
-          return "Prends 10 minutes seul(e) pour clarifier ce que tu ressens, puis note une action concrète à faire aujourd’hui.";
-        }
-
-        resultsDiv.innerHTML = `
-          <div class="result-card">
-            <h2>${resultData.emoji || "✨"} ${titles[resultData.mainType] || "Ton Profil MividAI"}</h2>
-
-            <p class="result-punchline">
-              ${punchlines[resultData.mainType] || "Tu possèdes un potentiel unique à révéler."}
-            </p>
-
-            <p><strong>Profil principal :</strong> ${resultData.title || "Non défini"}</p>
-            <p><strong>Énergie secondaire :</strong> ${resultData.secondaryTitle || "Non définie"}</p>
-
-            <h3>🧠 Lecture globale</h3>
-            <p>${dynamicInsight(resultData.scores)}</p>
-
-            <h3>🌟 Tes forces naturelles</h3>
-            <ul>
-              <li>${resultData.strengths?.[0] || "Force en cours d’analyse."}</li>
-              <li>${resultData.strengths?.[1] || "Force en cours d’analyse."}</li>
-              <li>${resultData.strengths?.[2] || "Force en cours d’analyse."}</li>
-            </ul>
-
-            <h3>⚠️ Ce qui peut te freiner</h3>
-            <ul>
-              <li>${resultData.blocks?.[0] || "Frein en cours d’analyse."}</li>
-              <li>${resultData.blocks?.[1] || "Frein en cours d’analyse."}</li>
-              <li>${resultData.blocks?.[2] || "Frein en cours d’analyse."}</li>
-            </ul>
-
-            <h3>🧭 Lecture MividAI</h3>
-            <p>${resultData.comboText || "Ta combinaison mérite encore d’être approfondie."}</p>
-
-            <h3>🚀 Ton prochain cap</h3>
-            <p>${resultData.advice || "Passe maintenant d’une intention à une action concrète."}</p>
-
-            <div class="action-box">
-              <strong>👉 Action immédiate</strong>
-              <p>${immediateAction(resultData.mainType)}</p>
-            </div>
-
-            <h3>🛠 Données reçues</h3>
-            <pre style="white-space: pre-wrap; font-size: 14px; background:#f3f7fa; padding:12px; border-radius:10px;">${JSON.stringify(resultData, null, 2)}</pre>
-          </div>
-        `;
-      }
-    } catch (error) {
-      resultsDiv.innerHTML = `
-        <div class="result-card">
-          <h2>❌ Erreur JavaScript</h2>
-          <p>Le script de la page résultats a rencontré un problème.</p>
-          <pre style="white-space: pre-wrap; font-size: 14px; background:#f3f7fa; padding:12px; border-radius:10px;">${error.message}</pre>
-        </div>
-      `;
-    }
-  </script>
+  } catch (e) {
+    resultsDiv.innerHTML += "<p>❌ ERREUR JSON</p>";
+    resultsDiv.innerHTML += "<pre>" + e.message + "</pre>";
+  }
+</script>
 </body>
 </html>
