@@ -1,4 +1,3 @@
-console.log("script chargé !");
 let currentQuestion = 0;
 let score = {
   humaniste: 0,
