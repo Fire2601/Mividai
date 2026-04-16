@@ -130,14 +130,14 @@
         text: "Tu préfères :",
         answers: [
           { text: "🧠 Réfléchir", type: "analytique" },
-          { text: "🚀 Passer à l'action", type: "creatif" },
+          { text: "🚀 Passer à l’action", type: "creatif" },
           { text: "🎨 Créer", type: "creatif" }
         ]
       },
       {
         text: "Quand tu dois décider :",
         answers: [
-          { text: "📊 J'analyse tout", type: "analytique" },
+          { text: "📊 J’analyse tout", type: "analytique" },
           { text: "❤️ Je suis mon intuition", type: "spirituel" },
           { text: "⚡ Je décide vite", type: "creatif" }
         ]
@@ -153,7 +153,7 @@
       {
         text: "Qu'est-ce qui te freine le plus ?",
         answers: [
-          { text: "😨 Peur d'échouer", type: "spirituel" },
+          { text: "😨 Peur d’échouer", type: "spirituel" },
           { text: "🤯 Trop réfléchir", type: "analytique" },
           { text: "⏳ Manque de temps", type: "creatif" }
         ]
@@ -169,8 +169,8 @@
       {
         text: "Quand tu commences quelque chose :",
         answers: [
-          { text: "🔥 Je vais jusqu'au bout", type: "creatif" },
-          { text: "😬 J'abandonne parfois", type: "spirituel" },
+          { text: "🔥 Je vais jusqu’au bout", type: "creatif" },
+          { text: "😬 J’abandonne parfois", type: "spirituel" },
           { text: "❌ Je lâche vite", type: "spirituel" }
         ]
       },
@@ -214,12 +214,17 @@
 
       quiz.innerHTML = `
         <div class="question">${q.text}</div>
-        ${q.answers.map(a =>
-          `<button class="btn" onclick="selectAnswer('${a.type}')">${a.text}</button>`
+        ${q.answers.map((a, index) =>
+          `<button class="btn" data-type="${a.type}" onclick="selectAnswerFromButton(this)">${a.text}</button>`
         ).join("")}
       `;
 
       updateProgress();
+    }
+
+    function selectAnswerFromButton(button) {
+      const type = button.dataset.type;
+      selectAnswer(type);
     }
 
     function selectAnswer(type) {
@@ -260,7 +265,6 @@
           ],
           advice: "Ta mission passe par la contribution, l’accompagnement et la création de liens authentiques."
         },
-
         analytique: {
           title: "L’Analytique",
           emoji: "🧠",
@@ -277,7 +281,6 @@
           ],
           advice: "Ta mission passe par la clarté, la stratégie, la compréhension et la construction de solutions durables."
         },
-
         spirituel: {
           title: "Le Spirituel",
           emoji: "✨",
@@ -294,7 +297,6 @@
           ],
           advice: "Ta mission passe par l’alignement, la profondeur, la conscience et la transmission de sens."
         },
-
         creatif: {
           title: "Le Créatif",
           emoji: "🎨",
