@@ -20,44 +20,81 @@
 
     <button class="btn" onclick="window.location.href='questions.html'">Recommencer</button>
   </div>
-<script>
-  const resultData = JSON.parse(localStorage.getItem("mividai_result") || "null");
-  const resultsDiv = document.getElementById("results");
 
-  if (!resultData) {
-    resultsDiv.innerHTML = `
-      <p>Aucun résultat trouvé.</p>
-      <p><a href="questions.html">Recommence le questionnaire</a>.</p>
-    `;
-  } else {
-    resultsDiv.innerHTML = `
-      <div class="result-card">
-        <h2>${resultData.emoji} Ton profil de mission de vie</h2>
+  <script>
+    function calculateLifePath(dateString) {
+      if (!dateString) return null;
 
-        <p><strong>Profil principal :</strong> ${resultData.title}</p>
-        <p><strong>Énergie secondaire :</strong> ${resultData.secondaryTitle}</p>
+      const digits = dateString.replace(/-/g, "").split("").map(Number);
+      let sum = digits.reduce((a, b) => a + b, 0);
 
-        <p>${resultData.description}</p>
+      while (sum > 9 && sum !== 11 && sum !== 22 && sum !== 33) {
+        sum = sum.toString().split("").map(Number).reduce((a, b) => a + b, 0);
+      }
 
-        <h3>🌟 Tes forces</h3>
-        <ul>
-          <li>${resultData.strengths[0]}</li>
-          <li>${resultData.strengths[1]}</li>
-          <li>${resultData.strengths[2]}</li>
-        </ul>
+      return sum;
+    }
 
-        <h3>⚠️ Tes freins</h3>
-        <ul>
-          <li>${resultData.blocks[0]}</li>
-          <li>${resultData.blocks[1]}</li>
-          <li>${resultData.blocks[2]}</li>
-        </ul>
+    const lifePathMeaning = {
+      1: "Leader naturel, tu es fait(e) pour initier.",
+      2: "Tu crées l’harmonie et la connexion.",
+      3: "Créativité et expression sont tes forces.",
+      4: "Tu es structuré(e) et bâtisseur(se).",
+      5: "Tu es fait(e) pour évoluer et explorer.",
+      6: "Tu es tourné(e) vers le soin et les autres.",
+      7: "Tu cherches la vérité et la profondeur.",
+      8: "Tu es lié(e) à la réussite et au pouvoir.",
+      9: "Tu es guidé(e) par l’impact humain.",
+      11: "Tu es intuitif(ve) et inspirant(e).",
+      22: "Tu es un bâtisseur de grande vision.",
+      33: "Tu es un guide et un transmetteur."
+    };
 
-        <h3>🚀 Ton conseil</h3>
-        <p>${resultData.advice}</p>
-      </div>
-    `;
-  }
-</script>
+    const resultData = JSON.parse(localStorage.getItem("mividai_result") || "null");
+    const birthdate = localStorage.getItem("birthdate");
+    const lifePath = calculateLifePath(birthdate);
+    const resultsDiv = document.getElementById("results");
+
+    if (!resultData) {
+      resultsDiv.innerHTML = `
+        <p>Aucun résultat trouvé.</p>
+        <p><a href="questions.html">Recommence le questionnaire</a>.</p>
+      `;
+    } else {
+      resultsDiv.innerHTML = `
+        <div class="result-card">
+          <h2>${resultData.emoji} Ton profil de mission de vie</h2>
+
+          <p><strong>Profil principal :</strong> ${resultData.title}</p>
+          <p><strong>Énergie secondaire :</strong> ${resultData.secondaryTitle}</p>
+
+          <p>${resultData.description}</p>
+
+          <h3>🔮 Ton chemin de vie</h3>
+          <p>
+            <strong>${lifePath ?? "Non disponible"}</strong>
+            ${lifePath ? `— ${lifePathMeaning[lifePath]}` : ""}
+          </p>
+
+          <h3>🌟 Tes forces</h3>
+          <ul>
+            <li>${resultData.strengths[0]}</li>
+            <li>${resultData.strengths[1]}</li>
+            <li>${resultData.strengths[2]}</li>
+          </ul>
+
+          <h3>⚠️ Tes freins</h3>
+          <ul>
+            <li>${resultData.blocks[0]}</li>
+            <li>${resultData.blocks[1]}</li>
+            <li>${resultData.blocks[2]}</li>
+          </ul>
+
+          <h3>🚀 Ton conseil</h3>
+          <p>${resultData.advice}</p>
+        </div>
+      `;
+    }
+  </script>
 </body>
 </html>

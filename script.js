@@ -181,3 +181,32 @@ function showResult() {
     <p>${message}</p>
     <button class="btn" onclick="startQuiz()">Recommencer</button>
   `;
+function calculateLifePath(dateString) {
+  if (!dateString) return null;
+
+  const digits = dateString.replace(/-/g, "").split("").map(Number);
+
+  let sum = digits.reduce((a, b) => a + b, 0);
+
+  while (sum > 9 && sum !== 11 && sum !== 22 && sum !== 33) {
+    sum = sum.toString().split("").map(Number).reduce((a, b) => a + b, 0);
+  }
+
+  return sum;
+}
+const birthdate = localStorage.getItem("birthdate");
+const lifePath = calculateLifePath(birthdate);
+const lifePathMeaning = {
+  1: "Tu es un(e) leader naturel(le), fait(e) pour initier et avancer.",
+  2: "Tu es fait(e) pour collaborer, ressentir et créer de l’harmonie.",
+  3: "Tu es une énergie d’expression, de créativité et de communication.",
+  4: "Tu es un(e) bâtisseur(se), structuré(e) et orienté(e) vers la stabilité.",
+  5: "Tu es fait(e) pour explorer, évoluer et vivre la liberté.",
+  6: "Tu es porté(e) par le soin, la responsabilité et l’amour des autres.",
+  7: "Tu es en quête de vérité, de profondeur et de compréhension.",
+  8: "Tu es lié(e) à la réussite, au pouvoir et à la matérialisation.",
+  9: "Tu es tourné(e) vers l’humain, la transmission et l’impact global.",
+  11: "Tu es une énergie intuitive et inspirante, connectée à plus grand.",
+  22: "Tu es un grand bâtisseur, capable de concrétiser des visions puissantes.",
+  33: "Tu es un guide, avec une forte dimension d’aide et de transmission."
+};
