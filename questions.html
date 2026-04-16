@@ -22,188 +22,190 @@
   </style>
 </head>
 <body>
-<nav class="navbar">
-  <a href="index.html">Accueil</a>
-  <a href="contact.html">Contact</a>
-</nav>
-<div class="container">
-  <h1>MividAI</h1>
-  <div class="progress">
-    <div class="progress-bar" id="progressBar"></div>
-</div>
-<div class="container">
+  <nav class="navbar">
+    <a href="index.html">Accueil</a>
+    <a href="contact.html">Contact</a>
+  </nav>
 
+  <div class="container">
+    <h1>MividAI</h1>
+
+    <div class="progress">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <div id="quiz"></div>
   </div>
-  <script src="script.js"></script>
-<script>
-const questions = [
-  {
-    text: "Comment te sens-tu actuellement ?",
-    answers: [
-      { text: "😄 Épanoui", type: "humaniste" },
-      { text: "😐 Neutre", type: "analytique" },
-      { text: "😕 Perdu", type: "spirituel" }
-    ]
-  },
-  {
-    text: "As-tu un objectif clair aujourd'hui ?",
-    answers: [
-      { text: "✅ Oui", type: "analytique" },
-      { text: "❌ Non", type: "spirituel" },
-      { text: "🤷\u200d♂️ Pas vraiment", type: "humaniste" }
-    ]
-  },
-  {
-    text: "Es-tu satisfait de ton quotidien ?",
-    answers: [
-      { text: "⭐ Très satisfait", type: "humaniste" },
-      { text: "🙂 Moyen", type: "analytique" },
-      { text: "😕 Pas satisfait", type: "spirituel" }
-    ]
-  },
-  {
-    text: "Tu préfères :",
-    answers: [
-      { text: "🧠 Réfléchir", type: "analytique" },
-      { text: "🚀 Passer à l'action", type: "creatif" },
-      { text: "🎨 Créer", type: "creatif" }
-    ]
-  },
-  {
-    text: "Quand tu dois décider :",
-    answers: [
-      { text: "📊 J'analyse tout", type: "analytique" },
-      { text: "❤️ Je suis mon intuition", type: "spirituel" },
-      { text: "⚡ Je décide vite", type: "creatif" }
-    ]
-  },
-  {
-    text: "Ce qui te motive le plus :",
-    answers: [
-      { text: "💰 Réussite", type: "analytique" },
-      { text: "🤝 Aider les autres", type: "humaniste" },
-      { text: "🎯 Accomplissement", type: "creatif" }
-    ]
-  },
-  {
-    text: "Qu'est-ce qui te freine le plus ?",
-    answers: [
-      { text: "😨 Peur d'échouer", type: "spirituel" },
-      { text: "🤯 Trop réfléchir", type: "analytique" },
-      { text: "⏳ Manque de temps", type: "creatif" }
-    ]
-  },
-  {
-    text: "As-tu tendance à procrastiner ?",
-    answers: [
-      { text: "😅 Souvent", type: "spirituel" },
-      { text: "🤔 Parfois", type: "humaniste" },
-      { text: "❌ Rarement", type: "analytique" }
-    ]
-  },
-  {
-    text: "Quand tu commences quelque chose :",
-    answers: [
-      { text: "🔥 Je vais jusqu'au bout", type: "creatif" },
-      { text: "😬 J'abandonne parfois", type: "spirituel" },
-      { text: "❌ Je lâche vite", type: "spirituel" }
-    ]
-  },
-  {
-    text: "Où veux-tu être dans 5 ans ?",
-    answers: [
-      { text: "💼 Réussite pro", type: "analytique" },
-      { text: "🌍 Liberté", type: "creatif" },
-      { text: "🧘\u200d♂️ Équilibre", type: "spirituel" }
-    ]
-  },
-  {
-    text: "Tu préfères :",
-    answers: [
-      { text: "🔒 Sécurité", type: "analytique" },
-      { text: "🚀 Risque", type: "creatif" },
-      { text: "⚖️ Les deux", type: "humaniste" }
-    ]
-  },
-  {
-    text: "Si tu pouvais changer une chose maintenant :",
-    answers: [
-      { text: "🧠 Ton mindset", type: "spirituel" },
-      { text: "💼 Ton travail", type: "analytique" },
-      { text: "🌍 Ton mode de vie", type: "creatif" }
-    ]
-  }
-];
 
-let currentQuestion = 0;
-let score = {
-  humaniste: 0,
-  analytique: 0,
-  spirituel: 0,
-  creatif: 0
-};
+  <script>
+    const questions = [
+      {
+        text: "Comment te sens-tu actuellement ?",
+        answers: [
+          { text: "😄 Épanoui", type: "humaniste" },
+          { text: "😐 Neutre", type: "analytique" },
+          { text: "😕 Perdu", type: "spirituel" }
+        ]
+      },
+      {
+        text: "As-tu un objectif clair aujourd'hui ?",
+        answers: [
+          { text: "✅ Oui", type: "analytique" },
+          { text: "❌ Non", type: "spirituel" },
+          { text: "🤷‍♂️ Pas vraiment", type: "humaniste" }
+        ]
+      },
+      {
+        text: "Es-tu satisfait de ton quotidien ?",
+        answers: [
+          { text: "⭐ Très satisfait", type: "humaniste" },
+          { text: "🙂 Moyen", type: "analytique" },
+          { text: "😕 Pas satisfait", type: "spirituel" }
+        ]
+      },
+      {
+        text: "Tu préfères :",
+        answers: [
+          { text: "🧠 Réfléchir", type: "analytique" },
+          { text: "🚀 Passer à l'action", type: "creatif" },
+          { text: "🎨 Créer", type: "creatif" }
+        ]
+      },
+      {
+        text: "Quand tu dois décider :",
+        answers: [
+          { text: "📊 J'analyse tout", type: "analytique" },
+          { text: "❤️ Je suis mon intuition", type: "spirituel" },
+          { text: "⚡ Je décide vite", type: "creatif" }
+        ]
+      },
+      {
+        text: "Ce qui te motive le plus :",
+        answers: [
+          { text: "💰 Réussite", type: "analytique" },
+          { text: "🤝 Aider les autres", type: "humaniste" },
+          { text: "🎯 Accomplissement", type: "creatif" }
+        ]
+      },
+      {
+        text: "Qu'est-ce qui te freine le plus ?",
+        answers: [
+          { text: "😨 Peur d'échouer", type: "spirituel" },
+          { text: "🤯 Trop réfléchir", type: "analytique" },
+          { text: "⏳ Manque de temps", type: "creatif" }
+        ]
+      },
+      {
+        text: "As-tu tendance à procrastiner ?",
+        answers: [
+          { text: "😅 Souvent", type: "spirituel" },
+          { text: "🤔 Parfois", type: "humaniste" },
+          { text: "❌ Rarement", type: "analytique" }
+        ]
+      },
+      {
+        text: "Quand tu commences quelque chose :",
+        answers: [
+          { text: "🔥 Je vais jusqu'au bout", type: "creatif" },
+          { text: "😬 J'abandonne parfois", type: "spirituel" },
+          { text: "❌ Je lâche vite", type: "spirituel" }
+        ]
+      },
+      {
+        text: "Où veux-tu être dans 5 ans ?",
+        answers: [
+          { text: "💼 Réussite pro", type: "analytique" },
+          { text: "🌍 Liberté", type: "creatif" },
+          { text: "🧘‍♂️ Équilibre", type: "spirituel" }
+        ]
+      },
+      {
+        text: "Tu préfères :",
+        answers: [
+          { text: "🔒 Sécurité", type: "analytique" },
+          { text: "🚀 Risque", type: "creatif" },
+          { text: "⚖️ Les deux", type: "humaniste" }
+        ]
+      },
+      {
+        text: "Si tu pouvais changer une chose maintenant :",
+        answers: [
+          { text: "🧠 Ton mindset", type: "spirituel" },
+          { text: "💼 Ton travail", type: "analytique" },
+          { text: "🌍 Ton mode de vie", type: "creatif" }
+        ]
+      }
+    ];
 
-function showQuestion() {
-  const quiz = document.getElementById("quiz");
-  const q = questions[currentQuestion];
+    let currentQuestion = 0;
+    let score = {
+      humaniste: 0,
+      analytique: 0,
+      spirituel: 0,
+      creatif: 0
+    };
 
-  quiz.innerHTML = `
-    <div class="question">${q.text}</div>
-    ${q.answers.map(a => 
-      `<button class="btn" onclick="selectAnswer('${a.type}')">${a.text}</button>`
-    ).join("")}
-  `;
+    function showQuestion() {
+      const quiz = document.getElementById("quiz");
+      const q = questions[currentQuestion];
 
-  updateProgress();
-}
+      quiz.innerHTML = `
+        <div class="question">${q.text}</div>
+        ${q.answers.map(a =>
+          `<button class="btn" onclick="selectAnswer('${a.type}')">${a.text}</button>`
+        ).join("")}
+      `;
 
-function selectAnswer(type) {
-  score[type]++;
-  currentQuestion++;
+      updateProgress();
+    }
 
-  if (currentQuestion < questions.length) {
-    showQuestion();
-  } else {
-    showResult();
-  }
-}
+    function selectAnswer(type) {
+      score[type]++;
+      currentQuestion++;
 
-function updateProgress() {
-  const progress = ((currentQuestion) / questions.length) * 100;
-  document.getElementById("progressBar").style.width = progress + "%";
-}
+      if (currentQuestion < questions.length) {
+        showQuestion();
+      } else {
+        showResult();
+      }
+    }
 
-function showResult() {
-  const quiz = document.getElementById("quiz");
-  
-  let resultType = Object.keys(score).reduce((a, b) =>
-    score[a] > score[b] ? a : b
-  );
+    function updateProgress() {
+      const progress = (currentQuestion / questions.length) * 100;
+      document.getElementById("progressBar").style.width = progress + "%";
+    }
 
-  let message = "";
+    function showResult() {
+      const quiz = document.getElementById("quiz");
 
-  if (resultType === "humaniste") {
-    message = "Tu es une personne tournée vers l'aide et les relations humaines.";
-  } else if (resultType === "analytique") {
-    message = "Tu es guidé(e) par la logique et la compréhension.";
-  } else if (resultType === "creatif") {
-    message = "Tu es une âme créative qui a besoin d'expression.";
-  } else {
-    message = "Tu es en quête de sens profond et de vérité intérieure.";
-  }
+      let resultType = Object.keys(score).reduce((a, b) =>
+        score[a] > score[b] ? a : b
+      );
 
-  quiz.innerHTML = `
-    <h2>Ton profil de mission de vie</h2>
-    <p>${message}</p>
-    <button class="btn" onclick="location.reload()">Recommencer</button>
-  `;
-}
+      let message = "";
 
+      if (resultType === "humaniste") {
+        message = "Tu es une personne tournée vers l'aide et les relations humaines.";
+      } else if (resultType === "analytique") {
+        message = "Tu es guidé(e) par la logique et la compréhension.";
+      } else if (resultType === "creatif") {
+        message = "Tu es une âme créative qui a besoin d'expression.";
+      } else {
+        message = "Tu es en quête de sens profond et de vérité intérieure.";
+      }
 
-window.onload = function() {
-  showQuestion();
-};
-</script>
-<script src="script.js"></script>
+      quiz.innerHTML = `
+        <h2>Ton profil de mission de vie</h2>
+        <p>${message}</p>
+        <button class="btn" onclick="location.reload()">Recommencer</button>
+      `;
+
+      document.getElementById("progressBar").style.width = "100%";
+    }
+
+    window.onload = function () {
+      showQuestion();
+    };
+  </script>
 </body>
 </html>

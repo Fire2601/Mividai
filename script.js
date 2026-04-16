@@ -6,20 +6,6 @@ let score = {
   creatif: 0
 };
 
-function startQuiz() {
-  currentQuestion = 0;
-  score = {
-    humaniste: 0,
-    analytique: 0,
-    spirituel: 0,
-    creatif: 0 };
-
-  document.getElementById("startButton").classList.add("hidden");
-  document.getElementById("result").classList.add("hidden");
-  document.getElementById("quiz").classList.remove("hidden");
-  showQuestion();
-}
-
 function showQuestion() {
   const quiz = document.getElementById("quiz");
   const q = questions[currentQuestion];
@@ -86,13 +72,3 @@ function showResult() {
     <button class="btn" onclick="startQuiz()">Recommencer</button>
   `;
 }
-window.onload = function() {
-  const quiz = document.getElementById("quiz");
-
-  if (!quiz) {
-    document.body.innerHTML = "ERREUR : quiz introuvable";
-  } else {
-    document.body.innerHTML = "OK : quiz trouvé";
-  }
-};
-alert("script lancé !");
