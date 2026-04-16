@@ -87,3 +87,13 @@ function showResult() {
     <button class="btn" onclick="startQuiz()">Recommencer</button>
   `;
 }
+window.onload = function() {
+  const quiz = document.getElementById("quiz");
+
+  if (!quiz) {
+    document.body.innerHTML = "ERREUR : quiz introuvable";
+  } else {
+    document.body.innerHTML = "OK : quiz trouvé";
+  }
+};
+alert("script lancé !");
