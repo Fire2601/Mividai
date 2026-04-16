@@ -3,18 +3,20 @@
 
 body {
   font-family: Arial;
-  background: #0f172a;
-  color: white;
+  background: #e8f4f8;
+  color: #1a355a;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
   margin: 0;
+  padding-top: 80px;
+  flex-direction: column;
 }
 
 h1 {
   font-size: 42px;
-  color: #4facfe;
+  color: #0099cc;
   margin-bottom: 10px;
 }
 
@@ -31,10 +33,10 @@ h1 {
 }
 
 .container {
-  background: #111827;
+  background: white;
   padding: 30px;
   border-radius: 15px;
-  box-shadow: 0 0 30px rgba(0,0,0,0.5);
+  box-shadow: 0 4px 15px rgba(0, 99, 153, 0.15);
 }
 .btn {
   display: block;
@@ -43,7 +45,7 @@ h1 {
   margin: 10px 0;
   border: none;
   border-radius: 12px;
-  background: linear-gradient(135deg, #1e293b, #334155);
+  background: linear-gradient(135deg, #0099cc, #006fa8);
   color: white;
   font-size: 16px;
   cursor: pointer;
@@ -52,8 +54,8 @@ h1 {
 
 .btn:hover {
   transform: scale(1.05);
-  background: linear-gradient(135deg, #334155, #475569);
-  box-shadow: 0 0 15px rgba(56, 189, 248, 0.5);
+  background: linear-gradient(135deg, #006fa8, #004d7a);
+  box-shadow: 0 0 15px rgba(0, 153, 204, 0.4);
 }
 
 #quiz button {
@@ -81,7 +83,7 @@ h1 {
 
 #results h2 {
   font-size: 24px;
-  color: #4facfe;
+  color: #0099cc;
   text-align: center;
 }
 
@@ -122,38 +124,51 @@ h1 {
 .contact-form input:focus,
 .contact-form textarea:focus {
   outline: none;
-  border-color: #4facfe;
-  box-shadow: 0 0 5px rgba(79, 172, 254, 0.3);
+  border-color: #0099cc;
+  box-shadow: 0 0 5px rgba(0, 153, 204, 0.3);
 }
 
 .contact-info {
   margin-top: 30px;
-  background: #f9f9f9;
+  background: #f0f8fb;
   padding: 20px;
   border-radius: 10px;
+  border: 2px solid #0099cc;
 }
 
 .contact-info a {
-  color: #4facfe;
+  color: #0099cc;
   text-decoration: none;
+  font-weight: 600;
 }
 
 .contact-info a:hover {
   text-decoration: underline;
 }
 .navbar {
-  margin-top: 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding: 20px;
+  background: #0099cc;
+  z-index: 100;
 }
 
 .navbar a {
-  margin: 0 15px;
   text-decoration: none;
-  color: #2c3e50;
+  color: white;
   font-weight: 600;
+  font-size: 16px;
+  transition: color 0.3s ease;
 }
 
 .navbar a:hover {
-  color: #4facfe;
+  color: #e8f4f8;
+  text-decoration: underline;
 }
 
 .fade {
@@ -179,7 +194,8 @@ h1 {
   text-align: center;
 }
 .question {
-  font-size: 24px;
+  font-size: 30px;
   margin-bottom: 25px;
   font-weight: bold;
+  line-height: 1.4;
 }
