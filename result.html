@@ -12,36 +12,55 @@
     <a href="contact.html">Contact</a>
   </nav>
 
-  <div class="container">
-    <h1>Tes Résultats</h1>
-    <p class="subtitle">Voici un aperçu basé sur tes réponses.</p>
+<div class="container">
+  <h1>Tes Résultats</h1>
+  <p class="subtitle">Voici ton analyse MividAI basée sur tes réponses.</p>
 
-    <div id="results"></div>
+  <div id="results"></div>
 
-    <button class="btn" onclick="window.location.href='questions.html'">Recommencer</button>
-  </div>
+  <button class="btn" onclick="window.location.href='questions.html'">Recommencer</button>
+</div>
+<script>
+  const resultData = JSON.parse(localStorage.getItem("mividai_result") || "null");
+  const resultsDiv = document.getElementById("results");
 
-  <script>
-    const responses = JSON.parse(localStorage.getItem('mividai_answers') || '[]');
-    const resultsDiv = document.getElementById('results');
+  if (!resultData) {
+    resultsDiv.innerHTML = `
+      <p>Aucun résultat trouvé.</p>
+      <p><a href="questions.html">Recommence le questionnaire</a>.</p>
+    `;
+  } else {
+    resultsDiv.innerHTML = `
+      <div class="result-card">
+        <h2>${resultData.emoji} Ton profil de mission de vie</h2>
 
-    if (responses.length === 0) {
-      resultsDiv.innerHTML = '<p>Aucune réponse trouvée. <a href="questions.html">Recommence le questionnaire</a>.</p>';
-    } else {
-      let message = '<h2>Tes réponses :</h2><ul>';
-      responses.forEach((resp, i) => {
-        message += `<li>Question ${i+1}: ${resp}</li>`;
-      });
-      message += '</ul><p>Basé sur tes réponses, tu sembles être quelqu\'un qui...</p>';
-      // Ajouter une logique simple pour le message
-      const positive = responses.filter(r => r.includes('Bien') || r.includes('Oui') || r.includes('Réfléchir') || r.includes('Réussite')).length;
-      if (positive >= 3) {
-        message += '<p>Tu es motivé et clair dans tes objectifs !</p>';
-      } else {
-        message += '<p>Il pourrait être temps de réfléchir à tes aspirations.</p>';
-      }
-      resultsDiv.innerHTML = message;
-    }
-  </script>
+        <p><strong>Profil principal :</strong> ${resultData.title}</p>
+        <p><strong>Énergie secondaire :</strong> ${resultData.secondaryTitle}</p>
+
+        <p>${resultData.description}</p>
+
+        <h3>🌟 Tes forces naturelles</h3>
+        <ul>
+          <li>${resultData.strengths[0]}</li>
+          <li>${resultData.strengths[1]}</li>
+          <li>${resultData.strengths[2]}</li>
+        </ul>
+
+        <h3>⚠️ Ce qui peut te freiner</h3>
+        <ul>
+          <li>${resultData.blocks[0]}</li>
+          <li>${resultData.blocks[1]}</li>
+          <li>${resultData.blocks[2]}</li>
+        </ul>
+
+        <h3>🧭 Lecture MividAI</h3>
+        <p>${resultData.comboText}</p>
+
+        <h3>🚀 Ton conseil</h3>
+        <p>${resultData.advice}</p>
+      </div>
+    `;
+  }
+</script>
 </body>
 </html>
