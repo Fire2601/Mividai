@@ -194,11 +194,14 @@
         message = "Tu es en quête de sens profond et de vérité intérieure.";
       }
 
-      quiz.innerHTML = `
-        <h2>Ton profil de mission de vie</h2>
-        <p>${message}</p>
-        <button class="btn" onclick="location.reload()">Recommencer</button>
-      `;
+ quiz.innerHTML = `
+  <div class="result-card">
+    <h2>Ton profil de mission de vie</h2>
+    <p>${message}</p>
+    <button class="btn" onclick="location.reload()">Recommencer</button>
+  </div>
+`;
+
 
       document.getElementById("progressBar").style.width = "100%";
     }

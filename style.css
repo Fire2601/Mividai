@@ -1,17 +1,18 @@
-/* Importation d'une police moderne */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
 body {
-  font-family: Arial;
+  font-family: 'Poppins', Arial, sans-serif;
   background: #e8f4f8;
   color: #1a355a;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   min-height: 100vh;
   margin: 0;
-  padding-top: 80px;
+  padding-top: 100px;
+  padding-bottom: 40px;
   flex-direction: column;
+  box-sizing: border-box;
 }
 
 h1 {
@@ -24,37 +25,92 @@ h1 {
   font-size: 20px;
   color: #555;
   margin-bottom: 30px;
+  line-height: 1.6;
 }
 
 .mission {
   text-align: left;
   margin: 30px 0;
-  line-height: 1.6;
+  line-height: 1.8;
+  font-size: 17px;
+}
+
+.mission h2 {
+  font-size: 26px;
+  margin-top: 24px;
+  margin-bottom: 10px;
+}
+
+.mission ul {
+  padding-left: 22px;
+}
+
+.container {
+  width: 90%;
+  max-width: 900px;
+  text-align: center;
+  background: white;
+  padding: 40px 32px;
+  border-radius: 20px;
+  box-shadow: 0 4px 15px rgba(0, 99, 153, 0.15);
+  box-sizing: border-box;
 }
 
 .btn {
   display: block;
   width: 100%;
-  padding: 15px;
-  margin: 10px 0;
+  max-width: 680px;
+  padding: 18px 22px;
+  margin: 14px auto;
   border: none;
-  border-radius: 12px;
+  border-radius: 14px;
   background: linear-gradient(135deg, #0099cc, #006fa8);
   color: white;
-  font-size: 16px;
+  font-size: 20px;
+  font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
+  box-sizing: border-box;
 }
 
 .btn:hover {
-  transform: scale(1.05);
+  transform: scale(1.03);
   background: linear-gradient(135deg, #006fa8, #004d7a);
   box-shadow: 0 0 15px rgba(0, 153, 204, 0.4);
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+#quiz {
+  margin-top: 20px;
 }
 
 #quiz button {
   display: block;
   width: 100%;
+}
+
+.question {
+  font-size: 34px;
+  margin-bottom: 30px;
+  font-weight: 700;
+  line-height: 1.45;
+  color: #1a355a;
+}
+
+#quiz h2 {
+  font-size: 34px;
+  color: #0099cc;
+  margin-bottom: 20px;
+}
+
+#quiz p {
+  font-size: 22px;
+  line-height: 1.8;
+  margin-bottom: 30px;
+  color: #355070;
 }
 
 #result {
@@ -63,11 +119,6 @@ h1 {
   font-weight: 500;
 }
 
-.footer {
-  margin-top: 40px;
-  font-size: 14px;
-  color: #777;
-}
 #results {
   font-size: 18px;
   line-height: 1.6;
@@ -90,6 +141,13 @@ h1 {
   margin-top: 20px;
   text-align: center;
 }
+
+.footer {
+  margin-top: 40px;
+  font-size: 14px;
+  color: #777;
+}
+
 .contact-section {
   text-align: left;
   margin-top: 20px;
@@ -113,6 +171,7 @@ h1 {
   border: 1px solid #ccc;
   font-size: 16px;
   width: 100%;
+  box-sizing: border-box;
 }
 
 .contact-form input:focus,
@@ -139,6 +198,7 @@ h1 {
 .contact-info a:hover {
   text-decoration: underline;
 }
+
 .navbar {
   position: fixed;
   top: 0;
@@ -147,22 +207,27 @@ h1 {
   display: flex;
   justify-content: center;
   gap: 30px;
-  padding: 20px;
+  padding: 22px 20px;
   background: #0099cc;
   z-index: 100;
 }
 
 .navbar a {
+  display: inline-block;
   text-decoration: none;
   color: white;
   font-weight: 600;
-  font-size: 16px;
-  transition: color 0.3s ease;
+  font-size: 18px;
+  padding: 10px 18px;
+  border-radius: 10px;
+  transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease;
 }
 
 .navbar a:hover {
   color: #e8f4f8;
-  text-decoration: underline;
+  background: rgba(255, 255, 255, 0.12);
+  text-decoration: none;
+  transform: translateY(-1px);
 }
 
 .fade {
@@ -179,23 +244,66 @@ h1 {
 .hidden {
   display: none;
 }
-.btn:active {
-  transform: scale(0.95);
+
+.result-card {
+  background: #f8fbfd;
+  border-radius: 20px;
+  padding: 35px 25px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  max-width: 760px;
+  margin: 20px auto 0;
 }
 
-.container {
-  width: 90%;
-  max-width: 500px;
-  text-align: center;
-  background: white;
-  padding: 30px;
-  border-radius: 15px;
-  box-shadow: 0 4px 15px rgba(0, 99, 153, 0.15);
-}
+@media (max-width: 768px) {
+  body {
+    padding-top: 90px;
+  }
 
-.question {
-  font-size: 30px;
-  margin-bottom: 25px;
-  font-weight: bold;
-  line-height: 1.4;
+  .container {
+    width: 92%;
+    padding: 28px 18px;
+  }
+
+  h1 {
+    font-size: 34px;
+  }
+
+  .subtitle {
+    font-size: 18px;
+  }
+
+  .navbar {
+    gap: 12px;
+    padding: 16px 12px;
+  }
+
+  .navbar a {
+    font-size: 16px;
+    padding: 8px 14px;
+  }
+
+  .question {
+    font-size: 26px;
+  }
+
+  .btn {
+    font-size: 18px;
+    padding: 16px 18px;
+  }
+
+  #quiz h2 {
+    font-size: 28px;
+  }
+
+  #quiz p {
+    font-size: 19px;
+  }
+
+  .mission h2 {
+    font-size: 22px;
+  }
+
+  .mission {
+    font-size: 16px;
+  }
 }
