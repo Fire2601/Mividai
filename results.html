@@ -30,37 +30,84 @@
       <p><a href="questions.html">Recommence le questionnaire</a>.</p>
     `;
   } else {
-    resultsDiv.innerHTML = `
-      <div class="result-card">
-        <h2>${resultData.emoji} Ton profil de mission de vie</h2>
+  const titles = {
+  humaniste: "Le Guide du Lien Humain",
+  analytique: "L’Architecte de Clarté",
+  spirituel: "L’Explorateur de Sens",
+  creatif: "Le Créateur de Possibilités"
+};
 
-        <p><strong>Profil principal :</strong> ${resultData.title}</p>
-        <p><strong>Énergie secondaire :</strong> ${resultData.secondaryTitle}</p>
+const punchlines = {
+  humaniste: "Tu es fait(e) pour connecter, soutenir et impacter les autres.",
+  analytique: "Tu es fait(e) pour comprendre, structurer et construire.",
+  spirituel: "Tu es fait(e) pour chercher, ressentir et éveiller.",
+  creatif: "Tu es fait(e) pour imaginer, créer et initier."
+};
 
-        <p>${resultData.description}</p>
+const dynamicInsight = () => {
+  const total = Object.values(resultData.scores).reduce((a, b) => a + b, 0);
+  const max = Math.max(...Object.values(resultData.scores));
+  const ratio = max / total;
 
-        <h3>🌟 Tes forces naturelles</h3>
-        <ul>
-          <li>${resultData.strengths[0]}</li>
-          <li>${resultData.strengths[1]}</li>
-          <li>${resultData.strengths[2]}</li>
-        </ul>
-
-        <h3>⚠️ Ce qui peut te freiner</h3>
-        <ul>
-          <li>${resultData.blocks[0]}</li>
-          <li>${resultData.blocks[1]}</li>
-          <li>${resultData.blocks[2]}</li>
-        </ul>
-
-        <h3>🧭 Lecture MividAI</h3>
-        <p>${resultData.comboText}</p>
-
-        <h3>🚀 Ton conseil</h3>
-        <p>${resultData.advice}</p>
-      </div>
-    `;
+  if (ratio > 0.6) {
+    return "Tu as un profil très affirmé. Ta direction intérieure est déjà forte.";
+  } else if (ratio > 0.45) {
+    return "Tu es en phase de structuration. Plusieurs dimensions de toi cherchent à s’équilibrer.";
+  } else {
+    return "Tu es dans une phase d’exploration. Ton potentiel est large mais demande à être clarifié.";
   }
+};
+
+resultsDiv.innerHTML = `
+  <div class="result-card">
+
+    <h2>${resultData.emoji} ${titles[resultData.mainType]}</h2>
+
+    <p style="font-size:22px; font-weight:600; text-align:center;">
+      ${punchlines[resultData.mainType]}
+    </p>
+
+    <p><strong>Profil principal :</strong> ${resultData.title}</p>
+    <p><strong>Énergie secondaire :</strong> ${resultData.secondaryTitle}</p>
+
+    <h3>🧠 Lecture globale</h3>
+    <p>${dynamicInsight()}</p>
+
+    <h3>🌟 Tes forces naturelles</h3>
+    <ul>
+      <li>${resultData.strengths[0]}</li>
+      <li>${resultData.strengths[1]}</li>
+      <li>${resultData.strengths[2]}</li>
+    </ul>
+
+    <h3>⚠️ Ce qui peut te freiner</h3>
+    <ul>
+      <li>${resultData.blocks[0]}</li>
+      <li>${resultData.blocks[1]}</li>
+      <li>${resultData.blocks[2]}</li>
+    </ul>
+
+    <h3>🧭 Lecture MividAI</h3>
+    <p>${resultData.comboText}</p>
+
+    <h3>🚀 Ton prochain cap</h3>
+    <p>${resultData.advice}</p>
+
+    <div style="margin-top:30px; padding:20px; background:#e8f4f8; border-radius:12px;">
+      <strong>👉 Action immédiate :</strong><br><br>
+      ${
+        resultData.mainType === "analytique"
+          ? "Note une décision que tu repousses et prends une action aujourd’hui."
+          : resultData.mainType === "creatif"
+          ? "Commence un projet ou une idée, même imparfaitement."
+          : resultData.mainType === "humaniste"
+          ? "Reconnecte avec quelqu’un ou apporte de la valeur à une personne aujourd’hui."
+          : "Prends 10 minutes seul(e) pour clarifier ce que tu ressens vraiment."
+      }
+    </div>
+
+  </div>
+`;
 </script>
 </body>
 </html>
