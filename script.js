@@ -6,36 +6,6 @@ let score = {
   creatif: 0
 };
 
-const questions = [
-  {
-    text: "Quand te sens-tu le plus vivant(e) ?",
-    answers: [
-      { text: "Aider les autres", type: "humaniste" },
-      { text: "Comprendre des choses complexes", type: "analytique" },
-      { text: "Créer quelque chose", type: "creatif" },
-      { text: "Réfléchir au sens de la vie", type: "spirituel" }
-    ]
-  },
-  {
-    text: "Dans un travail idéal, tu préfères :",
-    answers: [
-      { text: "Aider", type: "humaniste" },
-      { text: "Analyser", type: "analytique" },
-      { text: "Créer", type: "creatif" },
-      { text: "Comprendre l’humain", type: "spirituel" }
-    ]
-  },
-  {
-    text: "Ce qui est le plus important pour toi :",
-    answers: [
-      { text: "Les autres", type: "humaniste" },
-      { text: "La logique", type: "analytique" },
-      { text: "L’expression", type: "creatif" },
-      { text: "Le sens profond", type: "spirituel" }
-    ]
-  }
-];
-
 function startQuiz() {
   currentQuestion = 0;
   score = {
@@ -117,4 +87,3 @@ function showResult() {
     <button class="btn" onclick="startQuiz()">Recommencer</button>
   `;
 }
-const questions = [...]
