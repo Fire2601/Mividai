@@ -13,8 +13,7 @@ function startQuiz() {
     humaniste: 0,
     analytique: 0,
     spirituel: 0,
-    creatif: 0
-  };
+    creatif: 0 };
 
   document.getElementById("startButton").classList.add("hidden");
   document.getElementById("result").classList.add("hidden");
