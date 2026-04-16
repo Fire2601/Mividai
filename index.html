@@ -41,12 +41,37 @@
         <li>💖 Bien-être et épanouissement</li>
       </ul>
     </div>
-    <a href="questions.html">
-      <button class="btn">Commencer</button>
-    </a>
+  <div style="margin-top: 30px;">
+  <input 
+    type="date" 
+    id="birthdate" 
+    style="
+      width: 100%;
+      padding: 15px;
+      font-size: 18px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      margin-bottom: 15px;
+    "
+  >
+  <button class="btn" onclick="startQuiz()">Commencer</button>
+</div>
     <div class="footer">
       © 2026 MividAI – Tous droits réservés
     </div>
   </div>
+  <script>
+function startQuiz() {
+  const date = document.getElementById("birthdate").value;
+
+  if (!date) {
+    alert("Merci de renseigner ta date de naissance ✨");
+    return;
+  }
+
+  localStorage.setItem("birthdate", date);
+  window.location.href = "questions.html";
+}
+</script>
 </body>
 </html>
