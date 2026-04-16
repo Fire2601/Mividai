@@ -181,4 +181,3 @@ function showResult() {
     <p>${message}</p>
     <button class="btn" onclick="startQuiz()">Recommencer</button>
   `;
-}
