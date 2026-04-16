@@ -22,29 +22,6 @@
   </div>
 <script>
   const resultsDiv = document.getElementById("results");
-
-  // 🔥 DEBUG VISUEL DIRECT
-  resultsDiv.innerHTML = "<h2>DEBUG EN COURS...</h2>";
-
-  const raw = localStorage.getItem("mividai_result");
-
-  if (!raw) {
-    resultsDiv.innerHTML += "<p>❌ localStorage VIDE</p>";
-  } else {
-    resultsDiv.innerHTML += "<p>✅ localStorage trouvé</p>";
-    resultsDiv.innerHTML += "<pre>" + raw + "</pre>";
-  }
-
-  try {
-    const resultData = JSON.parse(raw);
-
-    resultsDiv.innerHTML += "<p>✅ JSON PARSÉ</p>";
-    resultsDiv.innerHTML += "<pre>" + JSON.stringify(resultData, null, 2) + "</pre>";
-
-  } catch (e) {
-    resultsDiv.innerHTML += "<p>❌ ERREUR JSON</p>";
-    resultsDiv.innerHTML += "<pre>" + e.message + "</pre>";
-  }
 </script>
 </body>
 </html>
