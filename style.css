@@ -32,12 +32,6 @@ h1 {
   line-height: 1.6;
 }
 
-.container {
-  background: white;
-  padding: 30px;
-  border-radius: 15px;
-  box-shadow: 0 4px 15px rgba(0, 99, 153, 0.15);
-}
 .btn {
   display: block;
   width: 100%;
@@ -188,11 +182,17 @@ h1 {
 .btn:active {
   transform: scale(0.95);
 }
+
 .container {
   width: 90%;
   max-width: 500px;
   text-align: center;
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 99, 153, 0.15);
 }
+
 .question {
   font-size: 30px;
   margin-bottom: 25px;
