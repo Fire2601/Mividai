@@ -307,3 +307,7 @@ h1 {
     font-size: 16px;
   }
 }
+.navbar a {
+  font-size: 18px !important;
+  padding: 10px 20px !important;
+}

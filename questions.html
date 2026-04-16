@@ -146,18 +146,18 @@
     };
 
     function showQuestion() {
-      const quiz = document.getElementById("quiz");
-      const q = questions[currentQuestion];
+  const quiz = document.getElementById("quiz");
+  const q = questions[currentQuestion];
 
-      quiz.innerHTML = `
-        <div class="question">${q.text}</div>
-        ${q.answers.map(a =>
-          `<button class="btn" onclick="selectAnswer('${a.type}')">${a.text}</button>`
-        ).join("")}
-      `;
+  quiz.innerHTML = `
+    <div class="question">${q.text}</div>
+    ${q.answers.map(a =>
+      `<button class="btn" onclick="selectAnswer('${a.type}')">${a.text}</button>`
+    ).join("")}
+  `;
 
-      updateProgress();
-    }
+  updateProgress();
+}
 
     function selectAnswer(type) {
       score[type]++;
