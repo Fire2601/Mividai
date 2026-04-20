@@ -35,6 +35,43 @@
       return sum;
     }
 
+    function generateFusion(mainType, lifePath) {
+      const base = {
+        analytique: "Tu es naturellement orienté(e) vers la compréhension, la structure et la logique.",
+        creatif: "Tu es animé(e) par la création, l’expression et l’envie de construire quelque chose d’unique.",
+        humaniste: "Tu es profondément connecté(e) aux autres et à l’envie d’apporter du sens.",
+        spirituel: "Tu es en quête de sens, d’alignement et de vérité intérieure."
+      };
+
+      const lifePathEnergy = {
+        1: "Tu es poussé(e) à prendre des initiatives et à tracer ton propre chemin.",
+        2: "Tu es invité(e) à collaborer et créer de l’harmonie autour de toi.",
+        3: "Tu dois exprimer ta créativité et ta communication.",
+        4: "Tu es fait(e) pour construire quelque chose de stable.",
+        5: "Tu es appelé(e) à évoluer, explorer et vivre la liberté.",
+        6: "Tu es tourné(e) vers le soin et la responsabilité.",
+        7: "Tu es en quête de compréhension profonde.",
+        8: "Tu es lié(e) à la réussite et à la matérialisation.",
+        9: "Tu es tourné(e) vers l’impact humain et collectif.",
+        11: "Tu portes une forte intuition et inspiration.",
+        22: "Tu es capable de construire des projets ambitieux.",
+        33: "Tu es dans une énergie de transmission et d’aide."
+      };
+
+      const tension = {
+        analytique: "Ton défi sera d’éviter de trop analyser avant d’agir.",
+        creatif: "Ton défi sera de rester constant(e) et structuré(e).",
+        humaniste: "Ton défi sera de ne pas t’oublier dans les autres.",
+        spirituel: "Ton défi sera de passer à l’action concrète."
+      };
+
+      return `
+        ${base[mainType] || ""}
+        ${lifePathEnergy[lifePath] || ""}
+        ${tension[mainType] || ""}
+      `;
+    }
+
     const lifePathMeaning = {
       1: "Leader naturel, tu es fait(e) pour initier.",
       2: "Tu crées l’harmonie et la connexion.",
@@ -74,48 +111,10 @@
           <p>
             <strong>${lifePath ?? "Non disponible"}</strong>
             ${lifePath ? `— ${lifePathMeaning[lifePath]}` : ""}
-         </p>
+          </p>
 
-   
-    function generateFusion(mainType, lifePath) {
-
-  const base = {
-    analytique: "Tu es naturellement orienté(e) vers la compréhension, la structure et la logique.",
-    creatif: "Tu es animé(e) par la création, l’expression et l’envie de construire quelque chose d’unique.",
-    humaniste: "Tu es profondément connecté(e) aux autres et à l’envie d’apporter du sens.",
-    spirituel: "Tu es en quête de sens, d’alignement et de vérité intérieure."
-  };
-
-  const lifePathEnergy = {
-    1: "Tu es poussé(e) à prendre des initiatives et à tracer ton propre chemin.",
-    2: "Tu es invité(e) à collaborer et créer de l’harmonie autour de toi.",
-    3: "Tu dois exprimer ta créativité et ta communication.",
-    4: "Tu es fait(e) pour construire quelque chose de stable.",
-    5: "Tu es appelé(e) à évoluer, explorer et vivre la liberté.",
-    6: "Tu es tourné(e) vers le soin et la responsabilité.",
-    7: "Tu es en quête de compréhension profonde.",
-    8: "Tu es lié(e) à la réussite et à la matérialisation.",
-    9: "Tu es tourné(e) vers l’impact humain et collectif.",
-    11: "Tu portes une forte intuition et inspiration.",
-    22: "Tu es capable de construire des projets ambitieux.",
-    33: "Tu es dans une énergie de transmission et d’aide."
-  };
-
-  const tension = {
-    analytique: "Ton défi sera d’éviter de trop analyser avant d’agir.",
-    creatif: "Ton défi sera de rester constant(e) et structuré(e).",
-    humaniste: "Ton défi sera de ne pas t’oublier dans les autres.",
-    spirituel: "Ton défi sera de passer à l’action concrète."
-  };
-
-  return `
-    ${base[mainType]} 
-    ${lifePathEnergy[lifePath] || ""} 
-    ${tension[mainType]}
-  `;
-}      
-         <h3>🧭 Lecture de ta mission</h3>
-<p>${generateFusion(resultData.mainType, lifePath)}</p>
+          <h3>🧭 Lecture de ta mission</h3>
+          <p>${generateFusion(resultData.mainType, lifePath)}</p>
 
           <h3>🌟 Tes forces</h3>
           <ul>
@@ -136,43 +135,6 @@
         </div>
       `;
     }
-    function generateFusion(mainType, lifePath) {
-
-  const base = {
-    analytique: "Tu es naturellement orienté(e) vers la compréhension, la structure et la logique.",
-    creatif: "Tu es animé(e) par la création, l’expression et l’envie de construire quelque chose d’unique.",
-    humaniste: "Tu es profondément connecté(e) aux autres et à l’envie d’apporter du sens.",
-    spirituel: "Tu es en quête de sens, d’alignement et de vérité intérieure."
-  };
-
-  const lifePathEnergy = {
-    1: "Tu es poussé(e) à prendre des initiatives et à tracer ton propre chemin.",
-    2: "Tu es invité(e) à collaborer et créer de l’harmonie autour de toi.",
-    3: "Tu dois exprimer ta créativité et ta communication.",
-    4: "Tu es fait(e) pour construire quelque chose de stable.",
-    5: "Tu es appelé(e) à évoluer, explorer et vivre la liberté.",
-    6: "Tu es tourné(e) vers le soin et la responsabilité.",
-    7: "Tu es en quête de compréhension profonde.",
-    8: "Tu es lié(e) à la réussite et à la matérialisation.",
-    9: "Tu es tourné(e) vers l’impact humain et collectif.",
-    11: "Tu portes une forte intuition et inspiration.",
-    22: "Tu es capable de construire des projets ambitieux.",
-    33: "Tu es dans une énergie de transmission et d’aide."
-  };
-
-  const tension = {
-    analytique: "Ton défi sera d’éviter de trop analyser avant d’agir.",
-    creatif: "Ton défi sera de rester constant(e) et structuré(e).",
-    humaniste: "Ton défi sera de ne pas t’oublier dans les autres.",
-    spirituel: "Ton défi sera de passer à l’action concrète."
-  };
-
-  return `
-    ${base[mainType]} 
-    ${lifePathEnergy[lifePath] || ""} 
-    ${tension[mainType]}
-  `;
-}
   </script>
 </body>
 </html>
