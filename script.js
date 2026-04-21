@@ -71,20 +71,16 @@ function showResult() {
   window.location.href = "results.html";
 }
 
-  const combinations = {
-    "humaniste-analytique": "Tu combines sens humain et clarté mentale. Tu peux exceller dans l’accompagnement, le conseil ou les projets à impact.",
-    "analytique-humaniste": "Tu es structuré(e), réfléchi(e) et profondément utile aux autres. Tu as un profil de bâtisseur au service d’une cause.",
-    "creatif-spirituel": "Tu as une énergie visionnaire. Tu peux créer des projets porteurs de sens, inspirants et profondément originaux.",
-    "spirituel-creatif": "Tu avances par intuition et inspiration. Ton potentiel est fort quand tu relies profondeur intérieure et expression concrète.",
-    "analytique-creatif": "Tu peux transformer tes idées en projets solides. Tu as un vrai potentiel d’innovation structurée.",
-    "creatif-analytique": "Tu es imaginatif(ve), mais aussi capable de donner une forme concrète à tes idées.",
-    "humaniste-spirituel": "Tu as une forte sensibilité humaine et intérieure. Tu peux aider, guider ou apaiser autour de toi.",
-    "spirituel-humaniste": "Tu cherches du sens tout en restant connecté(e) aux autres. Tu as un potentiel de présence, d’écoute et d’élévation.",
-    "humaniste-creatif": "Tu peux créer pour toucher, aider ou inspirer. Ton expression a une vraie valeur humaine.",
-    "creatif-humaniste": "Tu mets ton imagination au service des autres. Tu peux porter des projets inspirants et utiles.",
-    "analytique-spirituel": "Tu cherches à comprendre en profondeur. Tu peux relier logique et quête de sens avec beaucoup de justesse.",
-    "spirituel-analytique": "Tu combines intuition et réflexion. Tu peux devenir un profil rare, à la fois profond et clair."
-  };
+const combinations = {
+  "humaniste-analytique": "Tu combines cœur et logique...",
+  "analytique-humaniste": "Tu structures pour aider...",
+  "creatif-spirituel": "Tu crées avec intuition...",
+  "spirituel-creatif": "Tu ressens puis tu exprimes...",
+  "analytique-creatif": "Tu construis des idées innovantes...",
+  "creatif-analytique": "Tu imagines puis tu organises...",
+  "humaniste-spirituel": "Tu aides avec une profonde sensibilité...",
+  "spirituel-humaniste": "Tu guides avec amour..."
+};
 
   const mainProfile = profiles[mainType];
   const secondaryProfile = profiles[secondaryType];
@@ -188,15 +184,4 @@ const profiles = {
     forces: ["Imagination", "Originalité", "Énergie"],
     weakness: "Tu peux manquer de structure."
   }
-};
-
-const combinations = {
-  "humaniste-analytique": "Tu combines cœur et logique...",
-  "analytique-humaniste": "Tu structures pour aider...",
-  "creatif-spirituel": "Tu crées avec intuition...",
-  "spirituel-creatif": "Tu ressens puis tu exprimes...",
-  "analytique-creatif": "Tu construis des idées innovantes...",
-  "creatif-analytique": "Tu imagines puis tu organises...",
-  "humaniste-spirituel": "Tu aides avec une profonde sensibilité...",
-  "spirituel-humaniste": "Tu guides avec amour..."
 };
