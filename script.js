@@ -71,16 +71,6 @@ function showResult() {
   window.location.href = "results.html";
 }
 
-const combinations = {
-  "humaniste-analytique": "Tu combines cœur et logique...",
-  "analytique-humaniste": "Tu structures pour aider...",
-  "creatif-spirituel": "Tu crées avec intuition...",
-  "spirituel-creatif": "Tu ressens puis tu exprimes...",
-  "analytique-creatif": "Tu construis des idées innovantes...",
-  "creatif-analytique": "Tu imagines puis tu organises...",
-  "humaniste-spirituel": "Tu aides avec une profonde sensibilité...",
-  "spirituel-humaniste": "Tu guides avec amour..."
-};
 
   const mainProfile = profiles[mainType];
   const secondaryProfile = profiles[secondaryType];
@@ -185,3 +175,74 @@ const profiles = {
     weakness: "Tu peux manquer de structure."
   }
 };
+
+const combinations = {
+  "humaniste-analytique": "Tu combines cœur et logique...",
+  "analytique-humaniste": "Tu structures pour aider...",
+  "creatif-spirituel": "Tu crées avec intuition...",
+  "spirituel-creatif": "Tu ressens puis tu exprimes...",
+  "analytique-creatif": "Tu construis des idées innovantes...",
+  "creatif-analytique": "Tu imagines puis tu organises...",
+  "humaniste-spirituel": "Tu aides avec une profonde sensibilité...",
+  "spirituel-humaniste": "Tu guides avec amour..."
+};
+
+
+function showQuestion() {
+  const quiz = document.getElementById("quiz");
+  const question = questions[currentQuestion];
+
+  quiz.innerHTML = `
+    <h2>${question.text}</h2>
+    ${question.answers.map(answer =>
+      `<button class="btn" onclick="selectAnswer('${answer.type}')">${answer.text}</button>`
+    ).join("")}
+  `;
+
+  updateProgress();
+}
+
+function selectAnswer(type) {
+  score[type]++;
+
+  currentQuestion++;
+
+  if (currentQuestion < questions.length) {
+    showQuestion();
+  } else {
+    showResult();
+  }
+}
+
+function updateProgress() {
+  const progressBar = document.getElementById("progressBar");
+  const progress = (currentQuestion / questions.length) * 100;
+  progressBar.style.width = progress + "%";
+}
+
+function showResult() {
+  let sorted = Object.entries(score).sort((a, b) => b[1] - a[1]);
+
+  let primary = sorted[0][0];
+  let secondary = sorted[1][0];
+
+  let profile = profiles[primary];
+  let comboKey = `${primary}-${secondary}`;
+  let comboText = combinations[comboKey] || "Tu as une combinaison unique et équilibrée.";
+
+  let resultHTML = `
+    <h2>${profile.title}</h2>
+    <p><strong>Description :</strong> ${profile.description}</p>
+    <p><strong>Mission :</strong> ${profile.mission}</p>
+    <p><strong>Forces :</strong> ${profile.forces.join(", ")}</p>
+    <p><strong>Point d’attention :</strong> ${profile.weakness}</p>
+
+    <hr>
+
+    <h3>Ta combinaison unique</h3>
+    <p>${comboText}</p>
+  `;
+
+  localStorage.setItem("mividai_result", resultHTML);
+  window.location.href = "results.html";
+}
