@@ -46,81 +46,30 @@ function updateProgress() {
 }
 
 function showResult() {
-  const quiz = document.getElementById("quiz");
+  let sorted = Object.entries(score).sort((a, b) => b[1] - a[1]);
+  let primary = sorted[0][0];
+  let secondary = sorted[1][0];
 
-  const sortedProfiles = Object.entries(score).sort((a, b) => b[1] - a[1]);
-  const mainType = sortedProfiles[0][0];
-  const secondaryType = sortedProfiles[1][0];
+  let profile = profiles[primary];
+  let comboKey = `${primary}-${secondary}`;
+  let comboText = combinations[comboKey] || "";
 
-  const profiles = {
-    humaniste: {
-      title: "L’Humaniste",
-      emoji: "💖",
-      description: "Tu es profondément tourné(e) vers les autres, le lien humain et l’envie de contribuer positivement au monde.",
-      strengths: [
-        "Tu sais écouter et comprendre les autres",
-        "Tu accordes de l’importance au sens et aux relations",
-        "Tu as un vrai potentiel d’impact humain"
-      ],
-      blocks: [
-        "Tu peux parfois t’oublier au profit des autres",
-        "Tu hésites parfois à prendre ta place",
-        "Tu peux te disperser émotionnellement"
-      ],
-      advice: "Ta mission passe par la contribution, l’accompagnement et la création de liens authentiques."
-    },
+  let resultHTML = `
+    <h2>${profile.title}</h2>
+    <p><strong>Description :</strong> ${profile.description}</p>
+    <p><strong>Mission :</strong> ${profile.mission}</p>
+    <p><strong>Forces :</strong> ${profile.forces.join(", ")}</p>
+    <p><strong>Attention :</strong> ${profile.weakness}</p>
 
-    analytique: {
-      title: "L’Analytique",
-      emoji: "🧠",
-      description: "Tu es guidé(e) par la logique, la compréhension et le besoin de structurer les choses avec clarté.",
-      strengths: [
-        "Tu réfléchis avec profondeur",
-        "Tu sais analyser et organiser",
-        "Tu peux transformer des idées en stratégies solides"
-      ],
-      blocks: [
-        "Tu peux trop réfléchir avant d’agir",
-        "Tu recherches parfois trop de contrôle",
-        "Le doute peut ralentir tes décisions"
-      ],
-      advice: "Ta mission passe par la clarté, la stratégie, la compréhension et la construction de solutions durables."
-    },
+    <hr>
 
-    spirituel: {
-      title: "Le Spirituel",
-      emoji: "✨",
-      description: "Tu es en quête de sens, d’alignement intérieur et de vérité profonde dans ta vie.",
-      strengths: [
-        "Tu as une forte intuition",
-        "Tu ressens profondément les choses",
-        "Tu es attiré(e) par l’authenticité et la transformation"
-      ],
-      blocks: [
-        "Tu peux te sentir perdu(e) quand tout manque de sens",
-        "Tu peux douter de ta direction",
-        "Tu peux rester dans l’introspection sans passer à l’action"
-      ],
-      advice: "Ta mission passe par l’alignement, la profondeur, la conscience et la transmission de sens."
-    },
+    <h3>Ta combinaison unique</h3>
+    <p>${comboText}</p>
+  `;
 
-    creatif: {
-      title: "Le Créatif",
-      emoji: "🎨",
-      description: "Tu es animé(e) par l’élan, l’expression, l’innovation et le besoin de construire quelque chose d’unique.",
-      strengths: [
-        "Tu as des idées et de l’élan",
-        "Tu sais imaginer d’autres possibles",
-        "Tu peux inspirer et créer du mouvement"
-      ],
-      blocks: [
-        "Tu peux te disperser facilement",
-        "Tu peux te lasser si le cadre est trop rigide",
-        "Tu peux manquer de structure pour aller au bout"
-      ],
-      advice: "Ta mission passe par la création, l’expression, l’innovation et la mise en mouvement."
-    }
-  };
+  localStorage.setItem("mividai_result", resultHTML);
+  window.location.href = "results.html";
+}
 
   const combinations = {
     "humaniste-analytique": "Tu combines sens humain et clarté mentale. Tu peux exceller dans l’accompagnement, le conseil ou les projets à impact.",
@@ -209,4 +158,45 @@ const lifePathMeaning = {
   11: "Tu es une énergie intuitive et inspirante, connectée à plus grand.",
   22: "Tu es un grand bâtisseur, capable de concrétiser des visions puissantes.",
   33: "Tu es un guide, avec une forte dimension d’aide et de transmission."
+};
+const profiles = {
+  humaniste: {
+    title: "L’Humaniste",
+    description: "Tu es profondément tourné vers les autres...",
+    mission: "Ta mission est d’aider, accompagner et améliorer la vie des gens.",
+    forces: ["Empathie", "Générosité", "Écoute"],
+    weakness: "Tu peux parfois t’oublier toi-même."
+  },
+  analytique: {
+    title: "L’Analytique",
+    description: "Tu es logique et structuré...",
+    mission: "Ta mission est de comprendre, structurer et résoudre.",
+    forces: ["Logique", "Clarté", "Organisation"],
+    weakness: "Tu peux sur-analyser."
+  },
+  spirituel: {
+    title: "Le Spirituel",
+    description: "Tu es connecté à quelque chose de plus grand...",
+    mission: "Ta mission est de guider et éveiller.",
+    forces: ["Intuition", "Vision", "Profondeur"],
+    weakness: "Tu peux te perdre dans tes pensées."
+  },
+  creatif: {
+    title: "Le Créatif",
+    description: "Tu es guidé par l’expression...",
+    mission: "Ta mission est de créer et inspirer.",
+    forces: ["Imagination", "Originalité", "Énergie"],
+    weakness: "Tu peux manquer de structure."
+  }
+};
+
+const combinations = {
+  "humaniste-analytique": "Tu combines cœur et logique...",
+  "analytique-humaniste": "Tu structures pour aider...",
+  "creatif-spirituel": "Tu crées avec intuition...",
+  "spirituel-creatif": "Tu ressens puis tu exprimes...",
+  "analytique-creatif": "Tu construis des idées innovantes...",
+  "creatif-analytique": "Tu imagines puis tu organises...",
+  "humaniste-spirituel": "Tu aides avec une profonde sensibilité...",
+  "spirituel-humaniste": "Tu guides avec amour..."
 };
