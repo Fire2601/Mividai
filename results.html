@@ -29,7 +29,11 @@
       let sum = digits.reduce((a, b) => a + b, 0);
 
       while (sum > 9 && sum !== 11 && sum !== 22 && sum !== 33) {
-        sum = sum.toString().split("").map(Number).reduce((a, b) => a + b, 0);
+        sum = sum
+          .toString()
+          .split("")
+          .map(Number)
+          .reduce((a, b) => a + b, 0);
       }
 
       return sum;
@@ -118,68 +122,36 @@
 
           <h3>🌟 Tes forces</h3>
           <ul>
-            <li>${resultData.strengths[0]}</li>
-            <li>${resultData.strengths[1]}</li>
-            <li>${resultData.strengths[2]}</li>
+            ${resultData.strengths.map(item => `<li>${item}</li>`).join("")}
           </ul>
 
           <h3>⚠️ Tes freins</h3>
           <ul>
-            <li>${resultData.blocks[0]}</li>
-            <li>${resultData.blocks[1]}</li>
-            <li>${resultData.blocks[2]}</li>
+            ${resultData.blocks.map(item => `<li>${item}</li>`).join("")}
           </ul>
+
+          <h3>🌟 Ta combinaison unique</h3>
+          <p>${resultData.comboText}</p>
 
           <h3>🚀 Ton conseil</h3>
           <p>${resultData.advice}</p>
-<h3>✨ Ta synthèse de mission</h3>
-<p>
-  ${resultData.title} avec un chemin de vie ${lifePath}, 
-  tu es ici pour construire une vie alignée avec tes valeurs profondes.
-  Ton potentiel réside dans ta capacité à évoluer, comprendre et agir.
-  Si tu suis cette direction, tu peux réellement créer une vie qui te ressemble.
-</p>          
+
+          <h3>✨ Ta synthèse de mission</h3>
+          <p>
+            ${resultData.title} avec un chemin de vie ${lifePath ?? "non disponible"}, 
+            tu es ici pour construire une vie alignée avec tes valeurs profondes.
+            Ton potentiel réside dans ta capacité à évoluer, comprendre et agir.
+            Si tu suis cette direction, tu peux réellement créer une vie qui te ressemble.
+          </p>
+
+          <h3>📊 Tes scores</h3>
+          <p>Humaniste : ${resultData.scores.humaniste}</p>
+          <p>Analytique : ${resultData.scores.analytique}</p>
+          <p>Spirituel : ${resultData.scores.spirituel}</p>
+          <p>Créatif : ${resultData.scores.creatif}</p>
         </div>
       `;
     }
-
-<script>
-  const rawResult = localStorage.getItem("mividai_result");
-  const resultsContainer = document.getElementById("results");
-
-  if (rawResult) {p
-    const result = JSON.parse(rawResult);
-
-    resultsContainer.innerHTML = `
-      <div class="result-card">
-        <h2>${result.emoji} ${result.title}</h2>
-        <p><strong>Profil secondaire :</strong> ${result.secondaryType}</p>
-        <p><strong>Description :</strong> ${result.description}</p>
-        <p><strong>Conseil / Mission :</strong> ${result.advice}</p>
-
-        <h3>✨ Tes forces</h3>
-        <ul>
-          ${result.strengths.map(item => `<li>${item}</li>`).join("")}
-        </ul>
-
-        <h3>⚠️ Tes points de vigilance</h3>
-        <ul>
-          ${result.blocks.map(item => `<li>${item}</li>`).join("")}
-        </ul>
-
-        <h3>🌟 Ta combinaison unique</h3>
-        <p>${result.comboText}</p>
-
-        <h3>📊 Tes scores</h3>
-        <p>Humaniste : ${result.scores.humaniste}</p>
-        <p>Analytique : ${result.scores.analytique}</p>
-        <p>Spirituel : ${result.scores.spirituel}</p>
-        <p>Créatif : ${result.scores.creatif}</p>
-      </div>
-    `;
-  } else {
-    resultsContainer.innerHTML = "<p>Aucun résultat trouvé.</p>";
-  }
-</script>
+  </script>
 </body>
 </html>
