@@ -143,10 +143,43 @@
       `;
     }
 
-  </script>
-  <script>
-  const result = localStorage.getItem("mividai_result");
-  document.getElementById("results").innerHTML = result;
+<script>
+  const rawResult = localStorage.getItem("mividai_result");
+  const resultsContainer = document.getElementById("results");
+
+  if (rawResult) {p
+    const result = JSON.parse(rawResult);
+
+    resultsContainer.innerHTML = `
+      <div class="result-card">
+        <h2>${result.emoji} ${result.title}</h2>
+        <p><strong>Profil secondaire :</strong> ${result.secondaryType}</p>
+        <p><strong>Description :</strong> ${result.description}</p>
+        <p><strong>Conseil / Mission :</strong> ${result.advice}</p>
+
+        <h3>✨ Tes forces</h3>
+        <ul>
+          ${result.strengths.map(item => `<li>${item}</li>`).join("")}
+        </ul>
+
+        <h3>⚠️ Tes points de vigilance</h3>
+        <ul>
+          ${result.blocks.map(item => `<li>${item}</li>`).join("")}
+        </ul>
+
+        <h3>🌟 Ta combinaison unique</h3>
+        <p>${result.comboText}</p>
+
+        <h3>📊 Tes scores</h3>
+        <p>Humaniste : ${result.scores.humaniste}</p>
+        <p>Analytique : ${result.scores.analytique}</p>
+        <p>Spirituel : ${result.scores.spirituel}</p>
+        <p>Créatif : ${result.scores.creatif}</p>
+      </div>
+    `;
+  } else {
+    resultsContainer.innerHTML = "<p>Aucun résultat trouvé.</p>";
+  }
 </script>
 </body>
 </html>
