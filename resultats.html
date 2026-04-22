@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Résultats - MividAI</title>
-  <link rel="stylesheet" href="styl lo e.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <nav class="navbar">
@@ -29,11 +29,7 @@
       let sum = digits.reduce((a, b) => a + b, 0);
 
       while (sum > 9 && sum !== 11 && sum !== 22 && sum !== 33) {
-        sum = sum
-          .toString()
-          .split("")
-          .map(Number)
-          .reduce((a, b) => a + b, 0);
+        sum = sum.toString().split("").map(Number).reduce((a, b) => a + b, 0);
       }
 
       return sum;
@@ -138,7 +134,7 @@
 
           <h3>✨ Ta synthèse de mission</h3>
           <p>
-            ${resultData.title} avec un chemin de vie ${lifePath ?? "non disponible"}, 
+            ${resultData.title} avec un chemin de vie ${lifePath ?? "non disponible"},
             tu es ici pour construire une vie alignée avec tes valeurs profondes.
             Ton potentiel réside dans ta capacité à évoluer, comprendre et agir.
             Si tu suis cette direction, tu peux réellement créer une vie qui te ressemble.
