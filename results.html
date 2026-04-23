@@ -15,7 +15,9 @@
   <div class="container">
     <h1>Tes Résultats</h1>
     <p class="subtitle">Voici ton analyse MividAI basée sur tes réponses.</p>
-
+<p class="impact">
+  Ce profil reflète une énergie dominante qui guide naturellement tes choix et ta direction de vie.
+</p>
     <div id="results"></div>
 
     <button class="btn" onclick="window.location.href='questions.html'">Recommencer</button>
@@ -100,8 +102,9 @@
     } else {
       resultsDiv.innerHTML = `
         <div class="result-card">
-          <h2>${resultData.emoji} Ton profil de mission de vie</h2>
-
+<h2 class="big-title">
+  ${resultData.emoji} ${resultData.title}
+</h2>
           <p><strong>Profil principal :</strong> ${resultData.title}</p>
           <p><strong>Énergie secondaire :</strong> ${resultData.secondaryTitle}</p>
 
