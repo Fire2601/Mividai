@@ -127,6 +127,28 @@ const combinations = {
   "analytique-creatif": "Tu combines structure et imagination.",
   "creatif-analytique": "Tu imagines puis tu organises."
 };
+const projectIdeas = {
+  humaniste: [
+    "Créer un projet d’accompagnement (coaching, aide, mentorat)",
+    "S’engager dans une association ou une cause humaine",
+    "Lancer un contenu pour aider les autres (blog, podcast, vidéos)"
+  ],
+  analytique: [
+    "Créer un système ou outil pour résoudre un problème",
+    "Lancer un projet basé sur la logique (app, organisation, stratégie)",
+    "Analyser un domaine et proposer des solutions concrètes"
+  ],
+  spirituel: [
+    "Partager du contenu sur le développement personnel ou la spiritualité",
+    "Accompagner les autres dans leur réflexion ou leur évolution",
+    "Créer un espace de réflexion (communauté, cercle, contenu)"
+  ],
+  creatif: [
+    "Créer du contenu artistique ou inspirant (vidéo, design, écriture)",
+    "Lancer un projet créatif personnel",
+    "Explorer une activité qui te permet de t’exprimer librement"
+  ]
+};
 
 function showQuestion() {
   const quiz = document.getElementById("quiz");
@@ -173,7 +195,7 @@ function showResult() {
   const comboKey = `${mainType}-${secondaryType}`;
   const comboText =
     combinations[comboKey] || "Tu possèdes une combinaison unique qui mérite d’être approfondie.";
-
+const ideas = projectIdeas[mainType];
   const resultData = {
     mainType: mainType,
     secondaryType: secondaryType,
@@ -186,7 +208,7 @@ function showResult() {
     advice: mainProfile.advice,
     comboText: comboText,
     scores: score
-  };
+ ideas: ideas
 
   localStorage.setItem("mividai_result", JSON.stringify(resultData));
   window.location.href = "results.html";
