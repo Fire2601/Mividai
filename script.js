@@ -214,6 +214,5 @@ function selectAnswer(type) {
 
  localStorage.setItem("mividai_result", JSON.stringify(resultData));
   window.location.href = "results.html";
-} localStorage.setItem("mividai_result", JSON.stringify(resultData));
-  window.location.href = "results.html";
-}
+} 
+
