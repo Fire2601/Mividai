@@ -207,7 +207,7 @@ const ideas = projectIdeas[mainType];
     blocks: mainProfile.blocks,
     advice: mainProfile.advice,
     comboText: comboText,
-    scores: score
+    scores: score,
  ideas: ideas
 
   localStorage.setItem("mividai_result", JSON.stringify(resultData));

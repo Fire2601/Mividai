@@ -136,7 +136,7 @@
           <p>${resultData.advice}</p>
 <h3>💡 Des idées concrètes pour toi</h3>
 <ul>
-  ${resultData.ideas.map(idea => `<li>${idea}</li>`).join("")}
+  ${(resultData.ideas || []).map(idea => `<li>${idea}</li>`).join("")}
 </ul>
           <h3>✨ Ta synthèse de mission</h3>
           <p>
