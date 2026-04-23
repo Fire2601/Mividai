@@ -184,7 +184,7 @@ function selectAnswer(type) {
   }
 }
 
-function showResult() {
+  function showResult() {
   const sorted = Object.entries(score).sort((a, b) => b[1] - a[1]);
 
   const mainType = sorted[0][0];
@@ -195,21 +195,25 @@ function showResult() {
   const comboKey = `${mainType}-${secondaryType}`;
   const comboText =
     combinations[comboKey] || "Tu possèdes une combinaison unique qui mérite d’être approfondie.";
-const ideas = projectIdeas[mainType];
+
+  const ideas = projectIdeas[mainType] || [];
+
   const resultData = {
     mainType: mainType,
     secondaryType: secondaryType,
     title: mainProfile.title,
-    secondaryTitle: secondaryProfile.title || secondaryProfile.title,
+    secondaryTitle: secondaryProfile.title,
     emoji: mainProfile.emoji,
     description: mainProfile.description,
     strengths: mainProfile.strengths,
     blocks: mainProfile.blocks,
     advice: mainProfile.advice,
     comboText: comboText,
-    scores: score,
- ideas: ideas
+    ideas: ideas
+  };
 
-  localStorage.setItem("mividai_result", JSON.stringify(resultData));
+ localStorage.setItem("mividai_result", JSON.stringify(resultData));
+  window.location.href = "results.html";
+} localStorage.setItem("mividai_result", JSON.stringify(resultData));
   window.location.href = "results.html";
 }
